@@ -10,4 +10,5 @@ jobs:
       - run: cd build
       - run: "echo 'FROM nginx' > Dockerfile"
       - run: docker build -t ghcr.io/${{ github.repository }}:latest .
+      - run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
       - run: docker push ghcr.io/${{ github.repository }}:latest
