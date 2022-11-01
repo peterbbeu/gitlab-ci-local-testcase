@@ -1,0 +1,6 @@
+hello-world:
+  services:
+    - ghcr.io/peterbbeu/gitlab-ci-local-testcase:latest
+  script:
+    - docker pull ghcr.io/peterbbeu/gitlab-ci-local-testcase:latest
+    - echo "Hello World"
