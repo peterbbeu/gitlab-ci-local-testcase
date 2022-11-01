@@ -9,5 +9,5 @@ jobs:
       - run: mkdir build
       - run: cd build
       - run: "echo 'FROM nginx' > Dockerfile"
-      - run: docker build -t ${{ github.repository }}:latest .
-      - run: docker push ${{ github.repository }}:latest
+      - run: docker build -t ghcr.io/${{ github.repository }}:latest .
+      - run: docker push ghcr.io/${{ github.repository }}:latest
