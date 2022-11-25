@@ -1,6 +1,10 @@
+include:
+  - local: base.yml
+  - local: staging.yml
+    rules:
+      - if: $CI_COMMIT_BRANCH == "staging"
+
+
 hello-world:
-  services:
-    - ghcr.io/peterbbeu/gitlab-ci-local-testcase:latest
   script:
-    - docker pull ghcr.io/peterbbeu/gitlab-ci-local-testcase:latest
-    - echo "Hello World"
+    - "printenv | egrep '^(CI_COMMIT_BRANCH|ENVIRONMENT)='"

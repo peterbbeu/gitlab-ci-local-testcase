@@ -1,15 +1,12 @@
 name: CI/CD
 on: [push]
-env:
-  DOCKER_BUILDKIT: 1
 jobs:
   build-container:
     runs-on: ubuntu-latest
     steps:
-      - run: mkdir build
-      - run: cd build
-      - run: "echo 'FROM nginx' > Dockerfile"
-      - run: docker build -t ghcr.io/${{ github.repository }}:latest .
-      - run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-      - run: docker push ghcr.io/${{ github.repository }}:latest
-      - run: docker inspect ghcr.io/${{ github.repository }}:latest
+      # add node
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      - run: npm install -g gitlab-ci-local
+      - run: gitlab-ci-local
