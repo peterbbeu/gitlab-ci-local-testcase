@@ -1,7 +1,7 @@
 name: CI/CD
 on: [push]
 jobs:
-  gitlab-ci-local:
+  gitlab-ci-local-npm:
     runs-on: ubuntu-latest
     steps:
       # add node
@@ -9,6 +9,20 @@ jobs:
         with:
           node-version: '18.x'
       - run: npm install -g gitlab-ci-local
-      # checkout
+      - uses: actions/checkout@v3
+      - run: gitlab-ci-local
+
+  gitlab-ci-local-ppa:
+    runs-on: ubuntu-latest
+    steps:
+      # add node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: |
+          curl -s "https://firecow.github.io/gitlab-ci-local/ppa/pubkey.gpg" | apt-key add -
+          curl -s -o /etc/apt/sources.list.d/gitlab-ci-local.list "https://firecow.github.io/gitlab-ci-local/ppa/gitlab-ci-local.list"
+          apt-get update
+          apt-get install gitlab-ci-local
       - uses: actions/checkout@v3
       - run: gitlab-ci-local
