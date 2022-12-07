@@ -1,10 +1,12 @@
-include:
-  - local: base.yml
-  - local: staging.yml
-    rules:
-      - if: $CI_COMMIT_BRANCH == "staging"
+variables:
+  IMAGE_TAG: $CI_COMMIT_REF_SLUG
 
+include:
+  - local: ci/version-tag.yml
+    rules:
+      - if: $CI_COMMIT_TAG
 
 hello-world:
+  stage: build
   script:
-    - "printenv | egrep '^(CI_COMMIT_BRANCH|ENVIRONMENT)='"
+    - echo $IMAGE_TAG
