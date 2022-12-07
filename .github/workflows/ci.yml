@@ -9,6 +9,9 @@ jobs:
           node-version: '18.x'
       - run: npm install -g gitlab-ci-local
       - uses: actions/checkout@v3
+      - run: |
+          git config user.email "dummy@dummy.dummy"
+          git config user.name "dummy"
       - run: gitlab-ci-local --version
       - run: gitlab-ci-local --list
       - run: gitlab-ci-local
