@@ -10,6 +10,7 @@ jobs:
 #      - run: npm install -g gitlab-ci-local
       - run: git clone https://github.com/firecow/gitlab-ci-local.git
       - run: cd gitlab-ci-local && npm install && npm run build && npm run pkg-linux
+      - run: echo "$(realpath bin/linux)" >> $GITHUB_PATH && echo $GITHUB_PATH
       - uses: actions/checkout@v3
       - run: |
           git config user.email "dummy@dummy.dummy"
