@@ -1,4 +1,4 @@
 hello-world:
   stage: build
   script:
-    - printenv | grep -e '^CI_COMMIT_(BRANCH|TAG)='
+    - printenv | egrep '^CI_COMMIT_(BRANCH|TAG)='
