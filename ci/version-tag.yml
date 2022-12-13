@@ -1,7 +1,0 @@
-variables:
-  IMAGE_TAG: $CI_COMMIT_TAG
-
-hello-world2:
-  stage: build
-  script:
-    - echo hello world
