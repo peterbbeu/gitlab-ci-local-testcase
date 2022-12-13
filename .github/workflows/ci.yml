@@ -10,8 +10,9 @@ jobs:
 #      - run: npm install -g gitlab-ci-local
       - run: git clone https://github.com/firecow/gitlab-ci-local.git
       - run: cd gitlab-ci-local && npm install && npm run build && npm run pkg-linux
-      - run: mv gitlab-ci-local/bin/linux/gitlab-ci-local ${HOME}/.local/bin
+      - run: mkdir ${HOME}/.local/bin && mv gitlab-ci-local/bin/linux/gitlab-ci-local ${HOME}/.local/bin
       - run: ls -al ${HOME}/.local/bin
+      - {uses: lhotari/action-upterm@v1, with: {limit-access-to-actor: true}, timeout-minutes: 10}
       # - run: echo "$(realpath gitlab-ci-local/bin/linux)" >> $GITHUB_PATH
       # - run: echo $PATH
       # - run: gitlab-ci-local/bin/linux/gitlab-ci-local --version
