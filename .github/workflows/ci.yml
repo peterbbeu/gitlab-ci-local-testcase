@@ -11,6 +11,7 @@ jobs:
       - run: git clone https://github.com/firecow/gitlab-ci-local.git
       - run: cd gitlab-ci-local && npm install && npm run build && npm run pkg-linux
       - run: mv gitlab-ci-local/bin/linux/gitlab-ci-local ${HOME}/.local/bin
+      - run: ls -al ${HOME}/.local/bin
       # - run: echo "$(realpath gitlab-ci-local/bin/linux)" >> $GITHUB_PATH
       # - run: echo $PATH
       # - run: gitlab-ci-local/bin/linux/gitlab-ci-local --version
