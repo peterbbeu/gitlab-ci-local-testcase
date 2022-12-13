@@ -11,17 +11,11 @@ jobs:
       - run: git clone https://github.com/firecow/gitlab-ci-local.git
       - run: cd gitlab-ci-local && npm install && npm run build && npm run pkg-linux
       - run: mkdir ${HOME}/.local/bin && mv gitlab-ci-local/bin/linux/gitlab-ci-local ${HOME}/.local/bin
-      - run: ls -al ${HOME}/.local/bin
-      - {uses: lhotari/action-upterm@v1, with: {limit-access-to-actor: true}, timeout-minutes: 10}
-      # - run: echo "$(realpath gitlab-ci-local/bin/linux)" >> $GITHUB_PATH
-      # - run: echo $PATH
-      # - run: gitlab-ci-local/bin/linux/gitlab-ci-local --version
+      # - {uses: lhotari/action-upterm@v1, with: {limit-access-to-actor: true}, timeout-minutes: 10}
       - uses: actions/checkout@v3
       - run: |
           git config user.email "dummy@dummy.dummy"
           git config user.name "dummy"
       - run: gitlab-ci-local --version
-      - run: gitlab-ci-local --list
       - run: gitlab-ci-local
-      - run: gitlab-ci-local --list --variable CI_COMMIT_TAG=v1.2.3
       - run: gitlab-ci-local --variable CI_COMMIT_TAG=v1.2.3
