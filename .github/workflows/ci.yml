@@ -14,5 +14,5 @@ jobs:
           git config user.name "dummy"
       - run: gitlab-ci-local --version
       - run: gitlab-ci-local
-      - run: gitlab-ci-local --variable CI_COMMIT_TAG=v1.2.3
-      - run: gitlab-ci-local --variable CI_COMMIT_TAG=v1.2.3 --variable CI_COMMIT_BRANCH=''
+      # - run: gitlab-ci-local --variable CI_COMMIT_TAG=v1.2.3
+      # - run: gitlab-ci-local --variable CI_COMMIT_TAG=v1.2.3 --variable CI_COMMIT_BRANCH=''

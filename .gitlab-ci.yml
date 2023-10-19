@@ -1,4 +1,5 @@
 hello-world:
   stage: build
   script:
-    - printenv | egrep '^CI_COMMIT_(BRANCH|TAG)='
+    - |
+     echo "${CI_COMMIT_SHORT_SHA} (length: ${#CI_COMMIT_SHORT_SHA})"
