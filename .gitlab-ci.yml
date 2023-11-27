@@ -1,14 +1,12 @@
-hello-world:
+---
+# @Description Build alpine
+alpine-image:
+  services:
+    - docker:dind
+  needs: []
+  image: docker:stable
   stage: build
-  artifacts:
-    reports:
-      dotenv: build.env
   script:
-    - echo 'IMAGE=busybox:latest' > build.env
-
-hello-world-2:
-  stage: build
-  needs: ["hello-world"]
-  image: $IMAGE
-  script:
-    - echo hello world
+    - printenv
+    - ls -all /certs/client
+    - docker build .

@@ -7,6 +7,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+      - run: npm install -g gitlab-ci-local@4.45.1
+      - uses: actions/checkout@v3
+      - run: |
+          git config user.email "dummy@dummy.dummy"
+          git config user.name "dummy"
+      - run: gitlab-ci-local --version
+      - run: gitlab-ci-local
+
+  gitlab-ci-local-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
       - run: npm install -g gitlab-ci-local
       - uses: actions/checkout@v3
       - run: |
