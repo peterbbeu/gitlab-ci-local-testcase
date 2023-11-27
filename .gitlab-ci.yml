@@ -1,4 +1,14 @@
 hello-world:
   stage: build
+  artifacts:
+    reports:
+      dotenv: build.env
   script:
-    - printenv | egrep '^CI_COMMIT_(BRANCH|TAG)='
+    - echo 'IMAGE=busybox:latest' > build.env
+
+hello-world-2:
+  stage: build
+  needs: ["hello-world"]
+  image: $IMAGE
+  script:
+    - echo hello world
